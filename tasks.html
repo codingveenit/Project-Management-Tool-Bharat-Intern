@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Project Management - Tasks</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Project Management</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li class="active"><a href="tasks.html">Tasks</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="reports.html">Reports</a></li>
+    </ul>
+  </nav>
+
+  <section id="contentt">
+
+    <h2>Tasks</h2>
+
+    <div class="add-task-section">
+      <h2>Add New Task</h2>
+      <div class="add-task-form-container">
+        <form id="add-task-form">
+          <label for="task-title">Task Title:</label>
+          <input type="text" id="task-title" name="task-title" required>
+          <label for="task-description">Task Description:</label>
+          <textarea id="task-description" name="task-description" required></textarea>
+          <label for="task-assignee">Assignee:</label>
+          <input type="text" id="task-assignee" name="task-assignee" required>
+          <label for="task-status">Status:</label>
+          <select id="task-status" name="task-status" required>
+            <option value="Not started">Not started</option>
+            <option value="In progress">In progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+          <input type="submit" value="Add Task">
+        </form>
+      </div>
+    </div>
+
+    <div class="existing-tasks-section">
+      <h2>Existing Tasks</h2>
+      <ul class="task-list">
+        <li>
+          <h3>Design landing page layout</h3>
+          <p>Create wireframes and mockups for the landing page design using Adobe XD or Sketch.</p>
+          <p><strong>Project:</strong> Web Development for E-commerce Platform</p>
+          <p><strong>Assigned to:</strong> Deepak</p>
+          <p><strong>Status:</strong> In progress</p>
+          <h4>Team Report:</h4>
+          <ul class="team-report">
+            <li>Deepak: Completed wireframe sketches.</li>
+            <li>Rohit: Working on mockup design.</li>
+            <li>Aditya: Assisting with UI research.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Bharat Intern. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Handle form submission
+    document.getElementById("add-task-form").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form input values
+      var title = document.getElementById("task-title").value;
+      var description = document.getElementById("task-description").value;
+      var assignee = document.getElementById("task-assignee").value;
+      var status = document.getElementById("task-status").value;
+
+      // Create new task element
+      var newTask = document.createElement("li");
+      newTask.innerHTML = `
+        <h3>${title}</h3>
+        <p>${description}</p>
+        <p><strong>Assigned to:</strong> ${assignee}</p>
+        <p><strong>Status:</strong> ${status}</p>
+        <h4>Team Report:</h4>
+        <ul class="team-report"></ul>
+      `;
+
+      // Add the new task to the task list
+      var taskList = document.querySelector(".task-list");
+      taskList.appendChild(newTask);
+
+      // Reset the form
+      document.getElementById("add-task-form").reset();
+    });
+  </script>
+</body>
+
+</html>
